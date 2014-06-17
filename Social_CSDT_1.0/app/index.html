@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+  <script src='https://maps.googleapis.com/maps/api/js?v=3.exp"?key="AIzaSyBsqM8z-sm8gohHbuBO-2KlzbTyxbEAvsc"&sensor=false'></script>
+ <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>  
+
+<script src="bower_components/lodash/dist/lodash.underscore.js"></script>
+<script src="../app/bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
+  <link rel="stylesheet" href="css/app.css"/>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"/>
+  
+</head>
+<body ng-controller="MyCtrl1">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <div class="row">
+  
+  <div class="col-md-8" style="text"><h4>SocialCSDT 1.0</h4></div>
+  <div class="col-md-4">
+  <div class="input-group input-group-sm">
+      <input type="text" class="form-control" placeholder="Search for places">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button">Search</button>
+      </span>
+    </div><!-- /input-group -->
+  </div>
+  
+  </div>
+
+  </div>
+  <div class="panel-body">
+<div class="row">
+  <div class="col-md-6" style="text"> 
+ <ul class="nav nav-pills">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">Official Data Sets</a></li>
+  <li><a href="#">User Data Sets</a></li>
+</ul>
+ 
+
+  <div class="google-map" id="mapcan" center="map.center" zoom="map.zoom" draggable="true">
+  
+  <marker ng-repeat="m in mypath" coords="m" click="onMarkerClicked(m)" draggable="true" >
+  </marker>
+  <!-- <marker ng-repeat="d in mar" coords="d" icon="'img/cloud-check.png'" click="onMarkerClicked(d)" >
+  </marker>
+ -->
+ <markers models="mypath.location_points" coords="'self'">
+   
+ </markers>
+  
+
+  </div>
+ 
+ <button ng-click="changeMarker()"> Click</button>
+  </div> 
+<div class="col-md-6" style="text"> 
+ 
+
+  <select ng-model="mypath" ng-options="path.market_name for path in paths">
+          <option value="">-- choose Data Sets--</option>
+      </select>    
+  <select ng-model="mypath" ng-options="path.market_name for path in paths">
+          <option value="">-- choose Market name --</option>
+      </select>    
+      <input type="text" ng-model="query" placeholder="Search for Datasets"/>
+    <!--  <tr ng-repeat="item in mypath">
+            <td>{{item.market_name}}</td>
+            <td>{{item.zip}}</td>
+            <td>{{item.phone}}</td>
+           
+          </tr> -->
+
+<table >
+  <thead>
+  <tbody >
+      
+      <table class="table table-hover">
+      <tr>
+      <th> Market Name</th>
+      <th> Zip</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>County</th>
+      <tr ng-repeat="newpath in paths | filter:query">
+      <td><a href="" ng-click="inputclick(newpath[])"> {{newpath.market_name}}</a></td>
+      <td> {{newpath.zip}}</td>
+      <td>{{newpath.phone}}</td>
+       <td> {{newpath.address_line_1}}</td>
+        <td> {{newpath.city}}</td>
+         <td> {{newpath.county}}</td>
+      </tr>
+      </table>
+
+
+  </tbody>
+  </thead>
+  </table>
+  
+
+   </div>
+  </div>
+</div>
+
+</div>
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+    
+  
+
+  
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+  <script src="js/data.js"></script>
+</body>
+</html>
